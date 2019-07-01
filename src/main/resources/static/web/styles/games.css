@@ -1,0 +1,20 @@
+th {
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+td {
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.first-col {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+}
