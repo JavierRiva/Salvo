@@ -43,6 +43,11 @@ public class GamePlayer {
 
     public GamePlayer() {}
 
+    public GamePlayer(Game game, Player player) {
+        this.game = game;
+        this.player = player;
+    }
+
     public GamePlayer(Game game , Player player, Set<Ship> ships, Set<Salvo> salvoes) {
         this.game = game;
         this.player = player;

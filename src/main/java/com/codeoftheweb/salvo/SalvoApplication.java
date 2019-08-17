@@ -1,9 +1,11 @@
 package com.codeoftheweb.salvo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -18,14 +20,17 @@ public class SalvoApplication {
 		SpringApplication.run(SalvoApplication.class, args);
 	}
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	//@bean indica que esta para meter algo en la application
 	@Bean
 	public CommandLineRunner initData(PlayerRepository playerRepository, GameRepository gameRepository, GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository, ScoreRepository scoreRepository) {
 		return (args) -> {
-			Player player1 = new Player("j.bauer@ctu.gov");
-			Player player2 = new Player("c.obrian@ctu.gov");
-			Player player3 = new Player("kim_bauer@gmail.com");
-			Player player4 = new Player("t.almeida@ctu.gov");
+			Player player1 = new Player("j.bauer@ctu.gov", passwordEncoder.encode("24"));
+			Player player2 = new Player("c.obrian@ctu.gov", passwordEncoder.encode("42"));
+			Player player3 = new Player("kim_bauer@gmail.com", passwordEncoder.encode("kb"));
+			Player player4 = new Player("t.almeida@ctu.gov", passwordEncoder.encode("mole"));
 
 			Game game1 = new Game(LocalDateTime.now());
 			Game game2 = new Game(LocalDateTime.now().plusHours(1));
@@ -39,55 +44,64 @@ public class SalvoApplication {
 			Set<Ship> ships1 = new HashSet<>();
 			ships1.add(new Ship ("Destroyer", Arrays.asList("H2", "H3", "H4")));
 			ships1.add(new Ship ("Submarine", Arrays.asList("E1", "F1", "G1")));
-			ships1.add(new Ship ("Patrol Boat", Arrays.asList("B4", "B5")));
+			ships1.add(new Ship ("PatrolBoat", Arrays.asList("B4", "B5")));
 
 			Set<Ship> ships2 = new HashSet<>();
 			ships2.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships2.add(new Ship ("Patrol Boat", Arrays.asList("F1", "F2")));
+			ships2.add(new Ship ("PatrolBoat", Arrays.asList("F1", "F2")));
 
 			Set<Ship> ships3 = new HashSet<>();
 			ships3.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships3.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships3.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
 
 			Set<Ship> ships4 = new HashSet<>();
 			ships4.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
-			ships4.add(new Ship ("Patrol Boat", Arrays.asList("G6", "H6")));
+			ships4.add(new Ship ("PatrolBoat", Arrays.asList("G6", "H6")));
 
 			Set<Ship> ships5 = new HashSet<>();
 			ships5.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships5.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships5.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
 
 			Set<Ship> ships6 = new HashSet<>();
 			ships6.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
-			ships6.add(new Ship ("Patrol Boat", Arrays.asList("G6", "H6")));
+			ships6.add(new Ship ("PatrolBoat", Arrays.asList("G6", "H6")));
 
 			Set<Ship> ships7 = new HashSet<>();
 			ships7.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships7.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships7.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
 
 			Set<Ship> ships8 = new HashSet<>();
 			ships8.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
-			ships8.add(new Ship ("Patrol Boat", Arrays.asList("G6", "H6")));
+			ships8.add(new Ship ("PatrolBoat", Arrays.asList("G6", "H6")));
 
 			Set<Ship> ships9 = new HashSet<>();
 			ships9.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships9.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships9.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
 
 			Set<Ship> ships10 = new HashSet<>();
 			ships10.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
-			ships10.add(new Ship ("Patrol Boat", Arrays.asList("G6", "H6")));
+			ships10.add(new Ship ("PatrolBoat", Arrays.asList("G6", "H6")));
 
 			Set<Ship> ships11 = new HashSet<>();
 			ships11.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships11.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships11.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
 
 			Set<Ship> ships12 = new HashSet<>();
 			ships12.add(new Ship ("Destroyer", Arrays.asList("B5", "C5", "D5")));
-			ships12.add(new Ship ("Patrol Boat", Arrays.asList("C6", "C7")));
+			ships12.add(new Ship ("PatrolBoat", Arrays.asList("C6", "C7")));
+
+			/*Set<Ship> ships13 = new HashSet<>();
+			ships13.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
+			ships13.add(new Ship ("PatrolBoat", Arrays.asList("G6", "H6")));*/
 
 			Set<Ship> ships13 = new HashSet<>();
 			ships13.add(new Ship ("Submarine", Arrays.asList("A2", "A3", "A4")));
-			ships13.add(new Ship ("Patrol Boat", Arrays.asList("G6", "H6")));
+			ships13.add(new Ship ("PatrolBoat", Arrays.asList("G6", "G7")));
+			ships13.add(new Ship ("Carrier", Arrays.asList("B1", "B2", "B3", "B4", "B5")));
+			ships13.add(new Ship ("Battleship", Arrays.asList("F3", "F4", "F5", "F6")));
+			ships13.add(new Ship ("Destroyer", Arrays.asList("I1", "I2", "I3")));
+
+
 
 			Set<Salvo> salvoes1 = new HashSet<>();
 			salvoes1.add(new Salvo (1, Arrays.asList("B5", "C5", "F1")));

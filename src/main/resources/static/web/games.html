@@ -11,6 +11,20 @@
 </head>
 <body>
 <div class="container">
+
+    <form id="login-form" onsubmit="return false">
+        <label>Name: <input type="text" name="username" id="username"></label>
+        <label>Password: <input type="password" name="password" id="password"></label>
+        <button id="login-btn" type="login">Log in</button>
+        <button id="signup-btn" type="login">Sign up</button>
+    </form>
+
+    <form id="logout-form" onsubmit="return false">
+        <button id="logout-btn">Log out</button>
+        <button id="create-btn">New Game</button>
+    </form>
+
+
     <div class="row">
         <div class="col">
             <!--lista ordenada (ol) donde se van a meter los juegos en forma de lista-->

@@ -32,11 +32,15 @@ public class Player {
 
     private String userName;
 
+    private String password;
+
     public Player() {
     }
 
-    public Player(String userName) {
+    public Player(String userName, String password) {
+
         this.userName = userName;
+        this.password = password;
     }
 
     public Map<String, Object> toDTO () {
@@ -75,6 +79,14 @@ public class Player {
     // metodo que toma el score de la clase Score dando un game como parametro. De cada score toma el primer id que sea igual al id del juego ingresado (en este caso va a haber uno o ninguno), si no hay ninguno retorna un nulo
     public Score getScore(Game game){
         return scores.stream().filter(sco -> sco.getGame().getId()==game.getId()).findFirst().orElse(null);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 
