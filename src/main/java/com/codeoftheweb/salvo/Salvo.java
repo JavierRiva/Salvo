@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-public class Salvo {
+public class  Salvo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")

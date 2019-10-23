@@ -24,6 +24,7 @@ $.getJSON("/api/game_view/"+paramObj(location.search), function (data) {
         grid.addWidget($('<div id="Battleship"><div class="grid-stack-item-content BattleshipHorizontal"></div><div/>'), 0, 0, 4, 1, true);
         grid.addWidget($('<div id="Carrier"><div class="grid-stack-item-content CarrierHorizontal"></div><div/>'), 0, 0, 5, 1, true);
         addWidgetEvent(grid);
+        addSalvoEvent(grid);
     } else {
         createGrid(true);
         getShipsAndSalvoes(data);
@@ -223,6 +224,16 @@ function addWidgetEvent(grid){
                 $(this).effect("shake",{direction: "left", distance: 50, times: 10});
             }
         }
+    });
+}
+
+function addSalvoEvent(grid){
+    $(".grid-stack-item").click(function() {
+//        var h = parseInt($(this).attr("data-gs-height"));
+//        var w = parseInt($(this).attr("data-gs-width"));
+        var posX = parseInt($(this).attr("data-gs-x"));
+        var posY = parseInt($(this).attr("data-gs-y"));
+        grid.addWidget($('<div id="Bomb"><div class="grid-stack-item-content Bomb"></div><div/>'), posX, posY, 1, 1, true);
     });
 }
 
